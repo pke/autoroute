@@ -13,19 +13,12 @@
 #pragma comment(lib, "ws2_32")
 
 
-template <class T>
-struct EmptyStruct : public T {
-  EmptyStruct() { ZeroMemory(this, sizeof(T)); }
-  operator T&() { return *this; }
-};
-
-
 
 class CAutoRouteModule : public ATL::CAtlServiceModuleT<CAutoRouteModule, IDS_SERVICENAME>, public ATL::IWorkerThreadClient {
   ATL::CWorkerThread<> connectionListenerThread;
   
   DWORD addRoute(PCTSTR ip, PCTSTR mask, PCTSTR gateway, DWORD interfaceIndex) {
-    EmptyStruct<MIB_IPFORWARDROW> row;
+    ATL::EmptyStruct<MIB_IPFORWARDROW> row;
     row.dwForwardProto = MIB_IPPROTO_NETMGMT;
     row.dwForwardIfIndex = interfaceIndex;
     row.dwForwardType = 4;
