@@ -620,7 +620,7 @@
 			</FileConfiguration>
 		</File>
 		<File
-			RelativePath=".\README.textile"
+			RelativePath=".\README.markdown"
 			>
 		</File>
 	</Files>
