@@ -619,6 +619,10 @@
 				/>
 			</FileConfiguration>
 		</File>
+		<File
+			RelativePath=".\README.textile"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
