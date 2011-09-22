@@ -1,0 +1,29 @@
+HKCR {
+	NoRemove AppID {
+		'%APPID%' = s '%ServiceName%'
+		'AutoRoute.EXE' {
+			val AppID = s '%APPID%'
+		}
+	}
+}
+
+HKLM {
+	NoRemove System {
+		NoRemove CurrentControlSet {
+			NoRemove Services {
+				NoRemove '%ServiceName%' {
+					ForceRemove val Description = s 'Sets up a new route for VPNs upon establishing of a connection.'
+				}
+				NoRemove EventLog {
+					NoRemove Application {
+						ForceRemove '%ServiceName%' {
+							val EventMessageFile = s '%MODULE%'
+							val TypesSupported = d '%SupportedTypes%'
+						}
+					}
+				}
+			}
+		}
+	}
+	
+}
